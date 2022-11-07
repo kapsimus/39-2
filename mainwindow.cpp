@@ -7,8 +7,8 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    connect(ui->lineEdit, &QLineEdit::textEdited, [this](QString currentText){
-        QRegularExpression exp("^\\+\\d{11}$");
+    QRegularExpression exp("^\\+\\d{11}$");
+    connect(ui->lineEdit, &QLineEdit::textEdited, [this, &exp](QString currentText){
         if (exp.match(currentText).hasMatch()) {
             setOkLabel();
         } else {
